@@ -19,7 +19,6 @@ public class Book implements Comparable<Book> {
         return name;
     }
 
-
     public void setName(String name) {
         this.name = name;
     }
@@ -34,7 +33,11 @@ public class Book implements Comparable<Book> {
 
     @Override
     public int compareTo(Book other) {
-        return this.getName().compareTo(other.getName());
+        int res = this.getName().compareTo(other.getName());
+        if (res == 0) {
+            res = this.getAuthor().compareTo(other.getAuthor());
+        }
+        return res;
     }
 
     @Override
